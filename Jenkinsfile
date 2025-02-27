@@ -20,7 +20,7 @@ node {
     
     stage('Deploy to MicroK8s with Ansible') {
         dir('/home/fabien/Bureau/Demo') {
-            sh 'ansible-playbook deploy.yml'
+            sh 'ansible-playbook Ansible.yml'
         }
     }
 }
