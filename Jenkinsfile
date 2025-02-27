@@ -5,8 +5,10 @@ node {
         // Clone your repository here
     }
     
-    stage('Build images') {
-        app = docker.build("admfb/nginx")
+   stage('Build images') {
+        dir('/home/fabien/Bureau/elyse/demo/') {
+            app = docker.build("admfb/nginx", ".")
+        }
     }
     
     stage('Test image') {
