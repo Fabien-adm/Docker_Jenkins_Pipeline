@@ -12,9 +12,9 @@ node {
     }
     
      stage('Test image') {
-        docker.image('admfb/nginx').withRun('-p 8083:80') { c ->
+        docker.image('admfb/nginx').withRun('-p 8085:80') { c ->
             sh 'docker ps'
-            sh 'curl localhost:8083'
+            sh 'curl localhost:8085'
         }
     }
 }
