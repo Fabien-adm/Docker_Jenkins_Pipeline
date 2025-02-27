@@ -6,11 +6,11 @@ node {
     }
     
     stage('Build images') {
-        app = docker.build("nginx")
+        app = docker.build("admfb/nginx")
     }
     
     stage('Test image') {
-        docker.image('nginx').withRun('-p 80:80') { c ->
+        docker.image('admfb/nginx').withRun('-p 80:80') { c ->
             sh 'docker ps'
             sh 'curl localhost'
         }
