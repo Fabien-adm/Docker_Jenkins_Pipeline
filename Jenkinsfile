@@ -7,7 +7,7 @@ node {
     }
     
     stage('Build images') {
-        dir('/home/elka/Bureau/Demo/') {
+        dir('/var/lib/jenkins/workspace/') {
             // Construction de l'image Docker
             app = docker.build("admfb/nginx", ".")
         }
@@ -22,7 +22,7 @@ node {
     }
     
     stage('Deploy to MicroK8s with Ansible') {
-        dir('/home/elka/Bureau/Demo') {
+        dir('/var/lib/jenkins/workspace/') {
             echo 'Déploiement avec Ansible...'
             sh 'ansible-playbook Ansible.yml'
         }
