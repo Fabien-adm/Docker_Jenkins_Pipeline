@@ -2,11 +2,11 @@ node {
     def app
 
     stage('Clone') {
-        // Clone your repository here
+        // Clonage du depot
     }
     
     stage('Build images') {
-        dir('/home/fabien/Bureau/elyse/demo/') {
+        dir('/home/elka/Bureau/Demo/') {
             app = docker.build("admfb/nginx", ".")
         }
     }
@@ -19,7 +19,7 @@ node {
     }
     
     stage('Deploy to MicroK8s with Ansible') {
-        dir('/home/fabien/Bureau/Demo') {
+        dir('/home/elka/Bureau/Demo') {
             sh 'ansible-playbook Ansible.yml'
         }
     }
