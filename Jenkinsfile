@@ -9,15 +9,15 @@ node {
     stage('Build images') {
         dir('/var/lib/jenkins/workspace/') {
             // Construction de l'image Docker
-            app = docker.build("admfb/nginx", ".")
+            app = docker.build("elias/nginx", ".")
         }
     }
     
     stage('Test image') {
-        docker.image('admfb/nginx').withRun('-p 8085:80') { c ->
+        docker.image('elias/nginx').withRun('-p 8086:80') { c ->
             echo 'Vérification des conteneurs en cours...'
             sh 'docker ps'
-            sh 'curl localhost:8085'
+            sh 'curl localhost:8086'
         }
     }
     
