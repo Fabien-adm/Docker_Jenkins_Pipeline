@@ -3,26 +3,32 @@ node {
 
     stage('Clone') {
         echo 'Clonage du dépôt...'
-        // Ajoutez le code pour cloner votre dépôt 
+        sh 'git clone https://github.com/Fabien-adm/Docker_Jenkins_Pipeline.git'
+        dir('Docker_Jenkins_Pipeline') {
+            echo 'Dépôt cloné avec succès.'
+        }
     }
     
     stage('Build images') {
-        dir('/var/lib/jenkins/workspace/') {
-            // Construction de l'image Docker
-            app = docker.build("admfb/nginx", ".")
+        // Correction : Utilisation du répertoire cloné pour le Dockerfile
+        dir('Docker_Jenkins_Pipeline') {
+            echo 'Construction de l\'image Docker...'
+            app = docker.build("elyse/nginx", ".")
         }
     }
     
     stage('Test image') {
-        docker.image('admfb/nginx').withRun('-p 8085:80') { c ->
+        echo 'Test de l\'image Docker...'
+        docker.image('elyse/nginx').withRun('-p 8084:80') { c ->
             echo 'Vérification des conteneurs en cours...'
             sh 'docker ps'
-            sh 'curl localhost:8085'
+            sh 'curl localhost:8084'
         }
     }
     
     stage('Deploy to MicroK8s with Ansible') {
-        dir('/var/lib/jenkins/workspace/') {
+        // Correction : Utilisation du répertoire cloné pour les fichiers Ansible
+        dir('Docker_Jenkins_Pipeline') {
             echo 'Déploiement avec Ansible...'
             sh 'ansible-playbook Ansible.yml'
         }
