@@ -14,10 +14,10 @@ node {
     }
     
     stage('Test image') {
-        docker.image('elias/nginx').withRun('-p 8086:80') { c ->
+        docker.image('elias/nginx').withRun('-p 8085:80') { c ->
             echo 'Vérification des conteneurs en cours...'
             sh 'docker ps'
-            sh 'curl localhost:8086'
+            sh 'curl localhost:8085'
         }
     }
     
