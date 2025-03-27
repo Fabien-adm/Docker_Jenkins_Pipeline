@@ -3,7 +3,7 @@ node {
 
     stage('Clone') {
         echo 'Clonage du dépôt...'
-        // Ajoutez ici le code pour cloner votre dépôt (par exemple, git clone)
+        // 
     }
     
     stage('Build images') {
