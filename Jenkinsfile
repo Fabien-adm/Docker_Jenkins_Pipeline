@@ -3,9 +3,9 @@ node {
 
     stage('Clone') {
         echo 'Clonage du dépôt...'
-        sh 'git clone https://github.com/Fabien-adm/Docker_Jenkins_Pipeline.git'
-        dir('Docker_Jenkins_Pipeline') {
-            echo 'Dépôt cloné avec succès.'
+        //sh 'git clone https://github.com/Fabien-adm/Docker_Jenkins_Pipeline.git'
+        //dir('Docker_Jenkins_Pipeline') {
+           // echo 'Dépôt cloné avec succès.'
         }
     }
     
