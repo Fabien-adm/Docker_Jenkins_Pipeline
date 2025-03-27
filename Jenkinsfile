@@ -3,7 +3,7 @@ node {
 
     stage('Clone') {
         echo 'Clonage du dépôt...'
-        // 
+        // jd
     }
     
     stage('Build images') {
